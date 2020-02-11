@@ -1,0 +1,23 @@
+$containerWidth: 1200px;
+
+$navColor: rgb(255, 255, 255);
+$tableHeadingColor: rgb(128, 128, 128);
+$tableRowBackColor: rgb(221, 221, 221);
+$tableEvenBackColor: rgb(242, 242, 242);
+$linkColor: rgb(74, 74, 74);
+$linkColorHover: rgb(26, 26, 26);
+$boxBgColor: rgb(229, 229, 229);
+$primaryRed: rgb(225, 5, 0);
+
+$font-stack: (
+    'Titillium Web', 
+    sans-serif
+);
+
+$breakpoints: (
+    'xsmall': 375px,
+    'small': 576px,
+    'medium': 768px,
+    'large': 1024px,
+    'xlarge': 1360px
+)

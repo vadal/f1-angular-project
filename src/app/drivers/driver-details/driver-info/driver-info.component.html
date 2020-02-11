@@ -1,0 +1,20 @@
+<div class="driver-info">
+    <h2 class="driver-name">{{ driver?.name }}</h2>
+    <div>
+        <div>
+            <span><strong>Nationality: </strong></span>
+            <span class="driver-nationality">{{ driver?.nationality }}</span>
+        </div>
+        <div>
+            <span><strong>Team: </strong></span>
+            <span class="driver-constructor">{{ driver?.current_constructor }}</span>
+        </div>
+        <div>
+            <span><strong>Birth: </strong></span>
+            <span class="driver-dob">{{ driver?.dateOfBirth | date }}</span>
+        </div>
+        <div>
+            <span><a [href]="driver?.url" target="_blank">View Full Biography</a></span>
+        </div>
+    </div>
+</div>

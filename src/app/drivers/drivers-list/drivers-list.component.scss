@@ -1,0 +1,12 @@
+@import '../../../variables.scss';
+
+#search-box {
+    width: 100%;
+    font-size: 16px;
+    padding: 15px;
+    background: $tableEvenBackColor;
+    border: 0;
+    border-bottom: 2px solid $primaryRed;
+    outline: none;
+    margin-bottom: 20px;
+}

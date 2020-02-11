@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_ENDPOINTS: {
+    DRIVERS: "http://ergast.com/api/f1/current/driverStandings.json",
+    DRIVER_DETAILS: "http://ergast.com/api/f1/current/drivers/",
+    FORMAT: '/results.json'
+  }
 };
 
 /*

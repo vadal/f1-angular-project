@@ -1,0 +1,18 @@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th *ngFor="let heading of headings">
+                {{ heading }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let driver of drivers; trackBy: trackByFn;" 
+            single-driver-row 
+            [driver]="driver" 
+            (driverClicked)="driverClicked($event)" 
+            class="single-driver">
+        </tr>
+    </tbody>
+</table>

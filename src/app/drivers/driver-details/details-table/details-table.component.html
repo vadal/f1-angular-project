@@ -1,0 +1,19 @@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th *ngFor="let heading of headings; let i = index" 
+                (click)="sortBy(i)" 
+                class="has-sort">
+                {{ heading }}
+                <i class="fas fa-sort-amount-up" *ngIf="(sort == columns[i] && direction == 'asc') || sort != columns[i]"></i>
+                <i class="fas fa-sort-amount-down" *ngIf="sort == columns[i] && direction == 'desc'"></i>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr single-race [race]="race" 
+            *ngFor="let race of races;" class="race">
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+@import '../../../variables.scss';
+
+.details {
+    display: flex;
+    
+    &-left {
+        width: 30%;
+    }
+    
+    &-main {
+        width: 70%;
+    }
+}
+
+
+
+@media (max-width: map-get($breakpoints, medium)) {
+
+    .details {
+        display: block;
+        &-left {
+            min-width: 100%;
+        }
+        
+        &-main {
+            min-width: 100%;
+        }
+    }
+}

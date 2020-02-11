@@ -1,0 +1,17 @@
+
+<div class="details" *ngIf="!(isLoading$ | async); else loading">
+    <ng-container *ngIf="(races$ | async)?.length > 0; else nodata">
+        <div class="details-left">
+            <app-driver-info [driver]="driver$ | async"></app-driver-info>
+        </div>
+        <div class="details-main">
+            <app-details-table (sortChanged)="changeSort($event)" [races]="races$ | async" [headings]="headings" [columns]="columns"></app-details-table>
+        </div>
+    </ng-container>
+    <ng-template #nodata>
+        <app-empty-table></app-empty-table>
+    </ng-template>
+</div>
+<ng-template #loading>
+    <app-spinner></app-spinner>
+</ng-template>

@@ -1,35 +1,60 @@
+import { Component, Input } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { of } from 'rxjs';
+import { RootStoreFacade } from '@root-store';
+import { RootStoreFacadeStub } from './testing/root-store.facade.stub';
+import { Breadcrumb } from '@app-models/breadcrumb.model';
+
+@Component({selector: 'app-header', template: ''})
+class HeaderStubComponent {}
+
+@Component({selector: 'app-footer', template: ''})
+class FooterStubComponent {}
+
+@Component({selector: 'app-breadcrumb', template: ''})
+class BreadcrumbsStubComponent {
+  @Input() breadcrumbs;
+}
 
 describe('AppComponent', () => {
+  const breadcrumbs: Breadcrumb[] = [
+    new Breadcrumb('Home','/',true)
+  ];
+
+  let fixture, app;
+
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
       declarations: [
+        HeaderStubComponent,
+        FooterStubComponent,
+        BreadcrumbsStubComponent,
         AppComponent
       ],
+      providers: [
+        { provide: RootStoreFacade, useClass: RootStoreFacadeStub }
+      ]
+
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.debugElement.componentInstance;
+
+    fixture.debugElement.injector.get(RootStoreFacade);
+    fixture.detectChanges();
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'anixe-f1'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('anixe-f1');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to anixe-f1!');
-  });
+  afterEach(() => {
+    fixture.destroy();
+  })
 });

@@ -16,6 +16,11 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@root-store": ["./src/app/root-store"],
+      "@app-models/*": ["./src/app/models/*"],
+      "@app-root/*": ["./src/app/*"]
+    }
   }
 }

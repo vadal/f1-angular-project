@@ -1,0 +1,21 @@
+<div class="breadcrumbs" *ngIf="breadcrumbs.length > 0">
+    <ul>
+        <ng-container *ngFor="let breadcrumb of breadcrumbs">
+            <li *ngIf="breadcrumb.label != ':id'" class="breadcrumb">
+                <ng-container  *ngIf="!breadcrumb.last;else lastBr">
+                    <a (click)="navigateTo(breadcrumb)">
+                    {{ breadcrumb.label }} 
+                    </a>
+                    <i class="fas fa-chevron-right"></i>
+                </ng-container>
+                <ng-template #lastBr>
+                    <span class="current-page">
+                        <strong>
+                            {{ breadcrumb.label }}
+                        </strong>
+                    </span>
+                </ng-template>
+            </li>
+        </ng-container>
+    </ul>
+</div>

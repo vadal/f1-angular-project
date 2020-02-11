@@ -1,0 +1,12 @@
+<div *ngIf="!(isLoading$ | async); else loading">
+    <input #searchBox id="search-box" placeholder="Type to filter the results..." (input)="search(searchBox.value)" />
+    <div *ngIf="(drivers$ | async).length > 0; else nodata">
+        <app-drivers-table (driverClick)="driverClicked($event)" [drivers]="drivers$ | async" [headings]="headings"></app-drivers-table>
+    </div>
+    <ng-template #nodata>
+        <app-empty-table></app-empty-table>
+    </ng-template>
+</div>
+<ng-template #loading>
+    <app-spinner></app-spinner>
+</ng-template>

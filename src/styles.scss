@@ -1,1 +1,192 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './variables.scss';
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, 
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html, 
+body, 
+div, 
+ul, 
+li, 
+table, 
+span {
+  vertical-align: baseline;
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-stack;
+  font-size: 17px;
+  line-height: 23px;
+  letter-spacing: 0.2px;
+  background: #ffffff;
+  background-size: 100% auto;
+}
+
+a {
+  color: $primaryRed;
+  text-decoration: none;
+  border-bottom: 2px solid;
+  cursor: pointer;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  padding: 50px;
+  margin: 0 auto;
+}
+
+header {
+  background: $primaryRed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+nav.top-navigation {
+  margin: 0 auto;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  position: relative;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    position: absolute;
+    right: 0;
+  }
+  li a {
+    text-decoration: none;
+    color: $navColor;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border: 0;
+  }
+}
+
+.breadcrumbs {
+  margin-bottom:20px;
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    i {
+      margin: 0 10px;
+      font-size: 0.8rem;
+      color: $tableHeadingColor;
+    }
+    a {
+      border: none;
+    }
+  }
+}
+
+div.main {
+  margin-top: 50px;
+}
+
+table.table {
+  border-collapse: collapse;
+  th {
+    padding: 18px 20px 14px;
+    text-align: left;
+    color: $tableHeadingColor;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.8rem;
+  }
+  th.has-sort {
+    cursor: pointer;
+  }
+
+  td {
+    padding: 18px 20px 14px;
+
+    a {
+      text-decoration: none;
+      color: $linkColor;
+      font-weight: 600;
+    
+      &:hover {
+        color: $linkColorHover;
+      }
+    }
+  }
+
+  tbody tr:nth-child(odd){
+    background-color: $tableEvenBackColor;
+  }
+}
+
+.logo {
+  height: 40px;
+  margin: 10px 50px 10px 0;
+}
+
+.place-center {
+  text-align: center;
+}
+
+@media (min-width: map-get($breakpoints, xsmall)) {
+  body {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .container {
+    max-width: map-get($breakpoints, xsmall);
+    padding: 50px 0;
+  }
+  nav.top-navigation  {
+    max-width: map-get($breakpoints, xsmall);
+  }
+  .breadcrumbs {
+    display: none;
+  }
+}
+@media (min-width: map-get($breakpoints, small)) {
+  .container, nav.top-navigation  {
+    max-width: map-get($breakpoints, small);
+  }
+}
+
+@media (min-width: map-get($breakpoints, medium)) {
+  body {
+    font-size: 17px;
+  }
+  .container, nav.top-navigation  {
+    max-width: map-get($breakpoints, medium);
+  }
+  .breadcrumbs {
+    display: block;
+}
+}
+
+@media (min-width: map-get($breakpoints, large)) {
+  .container, nav.top-navigation  {
+    max-width: 986px;
+  }
+}
+
+@media (min-width: map-get($breakpoints, xlarge)) {
+  .container, nav.top-navigation  {
+    max-width: 1320px;
+  }
+}
