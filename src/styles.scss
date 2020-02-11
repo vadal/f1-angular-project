@@ -156,6 +156,7 @@ table.table {
   }
   nav.top-navigation  {
     max-width: map-get($breakpoints, xsmall);
+    margin: 0;
   }
   .breadcrumbs {
     display: none;
