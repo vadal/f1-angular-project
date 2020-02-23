@@ -15,7 +15,20 @@ export class DriversService {
 
     getDrivers(): Observable<Driver[]> {
         return this.http.get<Driver[]>(environment.API_ENDPOINTS.DRIVERS).pipe(
-            map(res => this.formatDrivers(res))
+            map((res: any) => {
+                let drivers: Driver[] = res['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'].map(d => {
+                    return {
+                        id: d['Driver'].driverId,
+                        url: d['Driver'].url,
+                        name: d['Driver'].givenName + ' ' + d['Driver'].familyName,
+                        dateOfBirth: d['Driver'].dateOfBirth,
+                        nationality: d['Driver'].nationality,
+                        wins: parseInt(d.wins),
+                        current_constructor: d['Constructors'][0].name
+                    }
+                })    
+                return drivers
+            })
         );
     }
 
@@ -33,38 +46,20 @@ export class DriversService {
 
     getDriverRaces(driverId: string): Observable<Race[]> {
         return this.http.get(environment.API_ENDPOINTS.DRIVER_DETAILS +  driverId + environment.API_ENDPOINTS.FORMAT).pipe(
-            map(res => {
-                return this.formatDriverDetails(res);
+            map((res: any) => {
+                let races: Race[] = res['MRData']['RaceTable']['Races'].map(r => {
+                    return {
+                        id: r.round,
+                        round: r.round,
+                        raceName: r.raceName,
+                        country: r['Circuit']['Location'].country,
+                        position: r['Results'][0].position,
+                        grid: r['Results'][0].grid,
+                        car_constructor: r['Results'][0]['Constructor'].name
+                    }
+                })
+                return races;
             })
         )
-    }
-
-    formatDrivers(response: any): Driver[] {
-        this.drivers = [];
-        for(let driver of response['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings']) {
-            this.drivers.push(new Driver(driver['Driver'].driverId,
-                                    driver['Driver'].url,
-                                    driver['Driver'].givenName,
-                                    driver['Driver'].familyName,
-                                    driver['Driver'].dateOfBirth,
-                                    driver['Driver'].nationality,
-                                    parseInt(driver.wins),
-                                    driver['Constructors'][0].name));
-        }
-        
-        return this.drivers;
-    }
-
-    formatDriverDetails(response: any): Race[] {
-        let results: Race[] = [];
-        for(let race of response['MRData']['RaceTable']['Races']) {
-            results.push(new Race(race.round,
-                                    race.raceName,
-                                    race['Circuit']['Location'].country,
-                                    race['Results'][0].position,
-                                    race['Results'][0].grid,
-                                    race['Results'][0]['Constructor'].name));
-        }
-        return results;
     }
 }

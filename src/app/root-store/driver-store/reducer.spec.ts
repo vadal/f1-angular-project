@@ -31,7 +31,7 @@ describe('Driver Reducer', () => {
     });
 
     it('should update state with success request', () => {
-        let items = [new Driver('hamilton', '/', 'Lewis', 'Hamilton', new Date().toString(), 'German', 10, 'Red Bull')];
+        let items = [{id: 'hamilton', url: '/', name: 'Lewis Hamilton', dateOfBirth: new Date(), nationality: 'German', wins: 10, current_constructor: 'Red Bull' }];
         const action = new LoadSuccessAction({items});
         const result = driverReducer(initialState, action);
 

@@ -8,12 +8,12 @@ export class RootStoreFacadeStub {
     raceIsLoading$ = of(false)
     raceError$ = of('')
     sortedRaces$ = of([])
-    allDriverRaces$ = of([new Race(1, 'Race1', 'Greece', 2, 3, 'Red Bull' )])
+    allDriverRaces$ = of([{id: 1, raceName: 'Race1', country: 'Greece', position: 2, grid: 3, car_constructor: 'Red Bull' }])
     driversCount$ = of(0)
     driverError$ = of('')
     driverIsLoading$ = of(false)
-    selectedDriver$ = of(new Driver('hamilton', '/', 'Lewis','Hamilton', new Date().toString(), 'German', 10, 'Red Bull' ))
-    allDrivers$ = of([new Driver('hamilton', '/', 'Lewis','Hamilton', new Date().toString(), 'German', 10, 'Red Bull' )])
+    selectedDriver$ = of({id: 'hamilton', url: '/', name: 'Lewis Hamilton', dateOfBirth: new Date().toString(), nationality: 'German', wins: 10, current_constructor: 'Red Bull'})
+    allDrivers$ = of([{id: 'hamilton', url: '/', name: 'Lewis Hamilton', dateOfBirth: new Date().toString(), nationality: 'German', wins: 10, current_constructor: 'Red Bull'}])
     driversLoaded = of(false)
 
     getAllDrivers() {}

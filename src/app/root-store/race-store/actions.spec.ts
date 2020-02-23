@@ -19,7 +19,7 @@ describe('Race Store', () => {
     });
 
     it('should create success request action', () => {
-        const items = [new Race(1, 'Race1', 'Greece', 2, 3, 'Red Bull' )];
+        const items = [{id: 1, round: 1, raceName: 'Race1', country: 'Greece', position: 2, grid: 3, car_constructor: 'Red Bull' }];
         const action = new LoadSuccessAction({items});
 
         expect(action.type).toBe(ActionTypes.LOAD_SUCCESS);

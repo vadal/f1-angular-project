@@ -10,7 +10,7 @@ describe('Driver Selectors', () => {
         resultsAdd;
 
     beforeAll(() => {
-        items.push(new Driver('hamilton', '/', 'Lewis', 'Hamilton', new Date().toString(), 'German', 10, 'Red Bull'));
+        items.push({id: 'hamilton', url: '/', name: 'Lewis Hamilton', dateOfBirth: new Date(), nationality: 'German', wins: 10, current_constructor: 'Red Bull' });
 
         actionAdd = new LoadSuccessAction({ items });
         resultsAdd = driverReducer(initialState, actionAdd);

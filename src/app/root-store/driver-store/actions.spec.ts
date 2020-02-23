@@ -10,7 +10,7 @@ describe('Driver Actions', () => {
     });
 
     it('should create a success request action', () => {
-        let items = [new Driver('hamilton', '/', 'Lewis', 'Hamilton', new Date().toString(), 'German', 10, 'Red Bull')];
+        let items: Driver[] = [{id: 'hamilton', url: '/', name: 'Lewis Hamilton', dateOfBirth: new Date(), nationality: 'German', wins: 10, current_constructor: 'Red Bull' }];
         const action = new LoadSuccessAction({items});
 
         expect(action.type).toEqual(ActionTypes.LOAD_SUCCESS);

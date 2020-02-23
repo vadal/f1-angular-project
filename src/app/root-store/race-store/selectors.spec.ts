@@ -10,7 +10,7 @@ describe('Race Selectors', () => {
         resultsAdd;
 
     beforeAll(() => {
-        items.push(new Race(1, 'Race1', 'Greece', 2, 3, 'Red Bull' ));
+        items.push({id: 1, round: 1, raceName: 'Race1', country: 'Greece', position: 2, grid: 3, car_constructor: 'Red Bull' });
 
         actionAdd = new LoadSuccessAction({ items });
         resultsAdd = raceReducer(initialState, actionAdd);

@@ -13,8 +13,8 @@ describe('SingleRaceRowComponent', () => {
   it('should create the single race row component', () => {
     const fixture = TestBed.createComponent(SingleRaceRowComponent);
     const app = fixture.debugElement.componentInstance;
+    app.race = {id: 1, round: 1, raceName: 'Race1', country: 'Greece', position: 2, grid: 3, car_constructor: 'Red Bull' };
     fixture.detectChanges();
-    
     expect(app).toBeTruthy();
     fixture.destroy();
   });

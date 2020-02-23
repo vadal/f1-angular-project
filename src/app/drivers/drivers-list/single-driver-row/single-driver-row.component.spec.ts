@@ -17,6 +17,7 @@ describe('SingleDriverRowComponent', () => {
   }));
 
   it('should create the single driver row component', () => {
+    app.driver = {id: 'hamilton', url: '/', name: 'Lewis Hamilton', dateOfBirth: new Date(), nationality: 'German', wins: 10, current_constructor: 'Red Bull' };
     fixture.detectChanges();
     expect(app).toBeTruthy();
     fixture.destroy();
@@ -24,38 +25,26 @@ describe('SingleDriverRowComponent', () => {
 
   it('should have driver\'s details in html', async() => {
     let dob = new Date('10-02-1987');
-    app.driver = {
-        name: 'Firstname Lastname',
-        current_constructor: 'Constructor1',
-        dateOfBirth: dob,
-        url: 'https://www.google.com',
-        wins: 10
-
-    }
+    app.driver = {id: 'hamilton', url: '/', name: 'Lewis Hamilton', dateOfBirth: new Date(), nationality: 'German', wins: 10, current_constructor: 'Red Bull' };
     fixture.detectChanges();
     
     const compiled = fixture.debugElement.nativeElement;
     
-    expect(compiled.querySelector('.driver-link').textContent).toContain('Firstname Lastname');
-    expect(compiled.querySelector('.driver-team').textContent).toContain('Constructor1');
+    expect(compiled.querySelector('.driver-link').textContent).toContain('Lewis Hamilton');
+    expect(compiled.querySelector('.driver-team').textContent).toContain('Red Bull');
     expect(compiled.querySelector('.driver-wins').textContent).toContain('10');
     fixture.destroy();
   });
 
   it('should have called handleclick on row click', fakeAsync(() => {
     let spy = spyOn(app, 'handleClick');
+    let dob = new Date('10-02-1987');
+    app.driver = {id: 'hamilton', url: '/', name: 'Lewis Hamilton', dateOfBirth: dob, nationality: 'German', wins: 10, current_constructor: 'Red Bull' };
     fixture.detectChanges();
     
     const compiled = fixture.debugElement;
     const driverRow = compiled.query(By.css('.driver-link'))
-    let dob = new Date('10-02-1987');
-    app.driver = {
-        name: 'Firstname Lastname',
-        current_constructor: 'Constructor1',
-        dateOfBirth: dob,
-        url: 'https://www.google.com'
 
-    }
     tick(1000);
     driverRow.triggerEventHandler('click', null);
     fixture.detectChanges();

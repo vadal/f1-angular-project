@@ -41,7 +41,7 @@ describe('DetailsTableComponent', () => {
 
   it('should fire driverClicked on driver click', () => {
     let spy = spyOn(app, 'driverClicked');
-    app.drivers = [new Driver('hamilton', '/', 'Lewis','Hamilton', new Date().toString(), 'German', 10, 'Red Bull' )]
+    app.drivers = [{id: 'hamilton', url: '/', name: 'Lewis Hamilton', dateOfBirth: new Date().toString(), nationality: 'German', wins: 10, current_constructor: 'Red Bull' }]
     fixture.detectChanges();
 
     const driver:any  = fixture.debugElement.queryAll(By.css('.single-driver'))[0];
